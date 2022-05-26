@@ -1,0 +1,22 @@
+include: package:flutter_lints/flutter.yaml
+linter:
+  rules:
+    prefer_single_quotes: true
+    always_declare_return_types: true
+    prefer_relative_imports: true
+    avoid_init_to_null: true
+    avoid_print: true
+    implementation_imports: false
+
+analyzer:
+  exclude: [build/**, lib/**.g.dart, test/**.mocks.dart]
+
+dart-code-metrics:
+  rules:
+    - member-ordering-extended:
+        order:
+          - fields
+          - constructors
+          - getters-setters
+          - public-methods
+          - private-methods
