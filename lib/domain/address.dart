@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'address.g.dart';
 
 @JsonSerializable()
-class AddressDetails {
+class Address {
   final String? id;
   final String? domesticId;
   final String? language;
@@ -62,7 +62,7 @@ class AddressDetails {
   final String? field19;
   final String? field20;
 
-  AddressDetails({
+  Address({
     this.id,
     this.domesticId,
     this.language,
@@ -122,7 +122,7 @@ class AddressDetails {
     this.field20,
   });
 
-  factory AddressDetails.fromJson(Map<String, dynamic> json) => _$AddressDetailsFromJson(json);
+  factory Address.fromJson(Map<String, dynamic> json) => _$AddressFromJson(json);
 
-  Map<String, dynamic> toJson() => _$AddressDetailsToJson(this);
+  Map<String, dynamic> toJson() => _$AddressToJson(this);
 }

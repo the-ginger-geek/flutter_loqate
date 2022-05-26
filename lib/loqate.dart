@@ -3,7 +3,7 @@ library loqate;
 import 'domain/find_request.dart';
 import 'domain/address.dart';
 import 'domain/retrieve_request.dart';
-import 'domain/search_item.dart';
+import 'domain/find_item.dart';
 import 'infrastructure/network/repository.dart';
 
 /// A Address Resolver.
@@ -24,11 +24,11 @@ class Loqate {
     repository = Repository(apiKey);
   }
 
-  Future<List<AddressItem>> find(FindRequest findRequest) async {
+  Future<List<FindItem>> find(FindRequest findRequest) async {
     return await repository.findAddresses(findRequest);
   }
 
-  Future<List<AddressDetails>> retrieve(RetrieveRequest retrieveRequest) async {
+  Future<List<Address>> retrieve(RetrieveRequest retrieveRequest) async {
     return await repository.retrieveAddresses(retrieveRequest);
   }
 }
