@@ -43,12 +43,6 @@
 # Ignore location used to store build artifacts in GitLab CI
 build-artifacts
 
-# Ignore build_runner auto generated files
-****/*.g.dart
-****/*.freezed.*
-****/*.config.dart
-****/*.gr.dart
-
 # Android stuff. We should not have had to add android related stuff here.
 # The issue of having ./gradle folder was caused by opening the project by going to File->false->Import Poject. This causes android studio to create this folder in the root project
 # To further avoid this, we need to open a flutter project not import it
