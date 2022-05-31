@@ -7,17 +7,17 @@ part of 'find_item.dart';
 // **************************************************************************
 
 FindItem _$FindItemFromJson(Map<String, dynamic> json) => FindItem(
-      id: json['id'] as String?,
-      type: json['type'] as String?,
-      text: json['text'] as String?,
-      highlight: json['highlight'] as String?,
-      description: json['description'] as String?,
+      id: json['Id'] as String?,
+      type: json['Type'] as String?,
+      text: json['Text'] as String?,
+      highlight: json['Highlight'] as String?,
+      description: json['Description'] as String?,
     );
 
 Map<String, dynamic> _$FindItemToJson(FindItem instance) => <String, dynamic>{
-      'id': instance.id,
-      'type': instance.type,
-      'text': instance.text,
-      'highlight': instance.highlight,
-      'description': instance.description,
+      'Id': instance.id,
+      'Type': instance.type,
+      'Text': instance.text,
+      'Highlight': instance.highlight,
+      'Description': instance.description,
     };

@@ -1,16 +1,17 @@
+import 'package:json_annotation/json_annotation.dart';
+
 import 'address.dart';
 
+part 'retrieve_response.g.dart';
+
+@JsonSerializable()
 class RetrieveResponse {
+  @JsonKey(name: 'Items')
   final List<Address> addresses;
 
   RetrieveResponse(this.addresses);
 
-  factory RetrieveResponse.fromJson(List<dynamic> json) {
-    List<Address> addresses = [];
-    for (var item in json) {
-      addresses.add(Address.fromJson(item));
-    }
+  factory RetrieveResponse.fromJson(Map<String, dynamic> json) => _$RetrieveResponseFromJson(json);
 
-    return RetrieveResponse(addresses);
-  }
+  Map<String, dynamic> toJson() => _$RetrieveResponseToJson(this);
 }

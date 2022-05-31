@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 import '../logging/logger.dart';
 
@@ -29,7 +30,7 @@ class Client {
     Map<String, dynamic>? queryParameters,
   }) async {
     final resolvedUrl = _addQueryParameters('$baseUrl$endpoint', queryParameters);
-    final uri = Uri.parse(resolvedUrl);
+    final uri = Uri.parse(Uri.encodeFull(resolvedUrl));
     final requestHeaders = _populateHeaders(defaultHeaders, headers);
 
     final response = await _makeTimedRequest(() => httpClient
@@ -45,7 +46,7 @@ class Client {
     dynamic body,
   }) async {
     final resolvedUrl = _addQueryParameters('$baseUrl$endpoint', queryParameters);
-    final uri = Uri.parse(resolvedUrl);
+    final uri = Uri.parse(Uri.encodeFull(resolvedUrl));
     final requestHeaders = _populateHeaders(defaultHeaders, headers);
     final message = encodeJson ? body : jsonEncode(body);
 
@@ -62,7 +63,7 @@ class Client {
     dynamic body,
   }) async {
     final resolvedUrl = _addQueryParameters('$baseUrl$endpoint', queryParameters);
-    final uri = Uri.parse(resolvedUrl);
+    final uri = Uri.parse(Uri.encodeFull(resolvedUrl));
     final requestHeaders = _populateHeaders(defaultHeaders, headers);
     final message = encodeJson ? body : jsonEncode(body);
 
@@ -79,7 +80,7 @@ class Client {
     dynamic body,
   }) async {
     final resolvedUrl = _addQueryParameters('$baseUrl$endpoint', queryParameters);
-    final uri = Uri.parse(resolvedUrl);
+    final uri = Uri.parse(Uri.encodeFull(resolvedUrl));
     final requestHeaders = _populateHeaders(defaultHeaders, headers);
     final message = encodeJson ? body : jsonEncode(body);
 
@@ -149,13 +150,14 @@ class Client {
   dynamic _returnValidResponse(http.Response response) {
     if (response.body.isNotEmpty) {
       final result = json.decode(response.body);
+      Log.debug(toString(), 'RESULT $result');
       return result;
     }
 
     return {};
   }
 
-  _handleTimeout(String resolvedUrl) {
+  FutureOr<Response> _handleTimeout(String resolvedUrl) {
     _printMessage('Request [$resolvedUrl] timed out after $_connectionTimeOut');
     throw TimeoutException('Request failed please try again');
   }

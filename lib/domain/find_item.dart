@@ -4,10 +4,15 @@ part 'find_item.g.dart';
 
 @JsonSerializable()
 class FindItem {
+  @JsonKey(name: 'Id')
   final String? id;
+  @JsonKey(name: 'Type')
   final String? type;
+  @JsonKey(name: 'Text')
   final String? text;
+  @JsonKey(name: 'Highlight')
   final String? highlight;
+  @JsonKey(name: 'Description')
   final String? description;
 
   FindItem({
