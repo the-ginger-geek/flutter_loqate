@@ -1,4 +1,4 @@
-Loqate, currently only address search, helps you locate addresses easier from plain text.
+Loqate helps you locate addresses easier from plain text.
 
 ## Features
 
