@@ -1,39 +1,32 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Loqate, currently only address search, helps you locate addresses easier from plain text.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Currently the package only supports basic address capture that loqate provides.
+
+Address Capture consists of two main API requests: a Find request is used to narrow down a possible list of addresses; and a Retrieve request is used to retrieve a fully formatted address.
+
+A typical address search is made up of a series of Find requests, followed by a Retrieve based on the user selection.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Create an account with loqate [on their website](https://www.loqate.com/en-us/) and get an API key that is needed for the package.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
 ```dart
-const like = 'sample';
+final Loqate loqate = Loqate(apiKey: EnvironmentConfig.loqateApiKey);
+
+final results = await loqate.find(FindRequest(addressString: 'Address Input'));
+
+final searchAddress = results.first;
+final retrievedAddresses = await loqate.retrieve(RetrieveRequest(id: searchAddress?.id));
+print('street : ${address.street}');
+print('admin area : ${address.adminAreaName}');
+print('city : ${address.city}');
+print('postal code : ${address.postalCode}');
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+To file an issue please do so on our GitHub [issue tracker](https://github.com/the-ginger-geek/flutter_loqate/issues)
