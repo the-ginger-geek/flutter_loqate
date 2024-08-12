@@ -3,20 +3,21 @@ description: Address search package
 version: 0.0.1
 
 environment:
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: '>=3.5.0 <4.0.0'
+  flutter: ">=3.24.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  logger: ^1.1.0
+  logger: ^2.4.0
   json_annotation: ^4.5.0
   http: ^1.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
+  flutter_lints: ^4.0.0
   json_serializable: ^6.2.0
   build_runner: ^2.1.10
 

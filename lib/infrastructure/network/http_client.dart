@@ -129,7 +129,7 @@ class Client {
         }
       });
 
-      return baseUrl + '?' + parametersBuffer.toString();
+      return '$baseUrl?$parametersBuffer';
     }
 
     return baseUrl;

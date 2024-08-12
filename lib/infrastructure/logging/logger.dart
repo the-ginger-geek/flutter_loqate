@@ -20,12 +20,13 @@ class Log extends Logger {
   static void warn(String logName, String log) => Log.get(logName).w(log);
 
   static void exception(String logName, String log, Exception? e) =>
-      Log.get(logName).e(log, e);
+      Log.get(logName).e(log);
 
   static void error(String logName, String log, StackTrace? e) =>
-      Log.get(logName).e(log, e);
+      Log.get(logName).e(log);
 
-  static void verbose(String logName, String log) => Log.get(logName).v(log);
+  static void verbose(String logName, String log) =>
+      Log.get(logName).log(Level.trace, log);
 }
 
 class CustomLogPrinter extends LogPrinter {
@@ -35,9 +36,11 @@ class CustomLogPrinter extends LogPrinter {
 
   @override
   List<String> log(LogEvent event) {
-    final color = PrettyPrinter.levelColors[event.level];
-    final emoji = PrettyPrinter.levelEmojis[event.level];
+    final printer = PrettyPrinter();
+
+    final color = printer.levelColors?[event.level] ?? const AnsiColor.none();
+    final emoji = printer.levelEmojis?[event.level] ?? '';
     final message = event.message;
-    return [color!('$emoji: $className - $message')];
+    return [color('$emoji: $className - $message')];
   }
 }
