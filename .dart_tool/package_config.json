@@ -455,10 +455,10 @@
       "name": "loqate",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-08-12T06:55:31.262292Z",
+  "generated": "2024-08-14T06:00:54.140259Z",
   "generator": "pub",
   "generatorVersion": "3.5.0",
   "flutterRoot": "file:///Users/neilhogg/development/flutter",
